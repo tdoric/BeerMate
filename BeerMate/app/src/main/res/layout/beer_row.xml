@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="216dp"
+        android:id="@+id/post_image"
+        android:src="@drawable/com_facebook_profile_picture_blank_portrait"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:layout_marginStart="75dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/post_title"
+        android:text="Post title goes here"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/labelType"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Type"
+            android:textColor="@color/authui_colorActivated" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/post_text"
+        android:text="Type of beer"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp" />
+        <TextView
+            android:id="@+id/labelPercentage"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Percentage"
+            android:textColor="@color/authui_colorActivated" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_percentage"
+            android:text="Post desc goes hre"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+        <TextView
+            android:id="@+id/labelCountry"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Country"
+            android:textColor="@color/authui_colorActivated" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_country"
+            android:text="Country goes here"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+
+        <TextView
+            android:id="@+id/labelBrewery"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Brewery"
+            android:textColor="@color/authui_colorActivated" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_brewery"
+            android:text="Brewery goes here"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

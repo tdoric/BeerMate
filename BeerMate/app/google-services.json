@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "632770320278",
+    "firebase_url": "https://beermate-c1764.firebaseio.com",
+    "project_id": "beermate-c1764",
+    "storage_bucket": "beermate-c1764.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632770320278:android:7f91ad7645794f5f",
+        "android_client_info": {
+          "package_name": "hr.foi.air.beermate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632770320278-395hpvg4ap9cne2d48uh7pkcd5o1brln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hr.foi.air.beermate",
+            "certificate_hash": "5E380CB870C4683C7F2CD43EF2640AD924E3309F"
+          }
+        },
+        {
+          "client_id": "632770320278-o13vjsdliqnp703v2rccc6f2vjo8o16a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0TxU8djegoqezGgaBopowgu0bF44KtY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632770320278-o13vjsdliqnp703v2rccc6f2vjo8o16a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
