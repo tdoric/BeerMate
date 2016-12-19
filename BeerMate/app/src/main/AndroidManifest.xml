@@ -13,7 +13,9 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".BeersListActivity" />
+        <activity android:name=".BeersListActivity">
+
+        </activity>
         <activity android:name=".SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
