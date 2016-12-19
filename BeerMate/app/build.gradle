@@ -27,10 +27,17 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.2.1'
     testCompile 'junit:junit:4.12'
+
+    //Firebase tools
     compile 'com.google.firebase:firebase-database:9.2.1'
     compile 'com.firebaseui:firebase-ui:0.6.2'
+    compile 'com.google.firebase:firebase-auth:9.2.1'
+
+    //RecycleView and CardView
     compile 'com.android.support:recyclerview-v7:24.1.1'
     compile 'com.android.support:cardview-v7:24.1.1'
+
+    //Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'

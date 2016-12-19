@@ -4,7 +4,7 @@
     android:id="@+id/activity_beers"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hr.foi.air.beermate.Beers">
+    tools:context="hr.foi.air.beermate.BeersListActivity">
    <android.support.v7.widget.RecyclerView
        android:id="@+id/main_recycler"
        android:layout_width="match_parent"
