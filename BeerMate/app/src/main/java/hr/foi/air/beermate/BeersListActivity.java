@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class Beers extends AppCompatActivity {
+public class BeersListActivity extends AppCompatActivity {
     private RecyclerView beersList;
     private DatabaseReference mReference;
     @Override
