@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import hr.foi.air.beermate.Maps.MapsActivity;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -18,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openBeers(View view){
         Intent intent = new Intent(this,BeersListActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMaps(View view){
+        Intent intent = new Intent(this,MapsActivity.class);
         startActivity(intent);
     }
 }

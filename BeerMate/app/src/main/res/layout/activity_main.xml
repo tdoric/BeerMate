@@ -40,6 +40,7 @@
         android:layout_height="240dp"
         app:srcCompat="@mipmap/mapa"
         android:id="@+id/imageView12"
+        android:onClick="openMaps"
         android:background="@mipmap/background"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
