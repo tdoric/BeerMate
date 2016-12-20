@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import hr.foi.air.beermate.Maps.MapsActivity;
+import hr.foi.air.beermate.MapsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openMaps(View view){
-        Intent intent = new Intent(this,MapsActivity.class);
-        startActivity(intent);
-    }
+   public void openMapsActivity (View view){
+       Intent i = new Intent(this,MapsActivity.class);
+       startActivity(i);
+   }
 }
