@@ -10,5 +10,11 @@
     <string name="signUpLogin">Not a member? Sign up now.</string>
     <string name="signupButtonLogin">LOGIN</string>
     <string name="naslovLogin">BeerMate</string>
+    <string name="backRegister">Back</string>
+    <string name="mailRegister">E-mail</string>
+    <string name="passwordRegister">Password</string>
+    <string name="usernameRegister">Username</string>
+    <string name="buttonRegister">Register</string>
+    <string name="repeatPassRegister">Repeat password</string>
 
 </resources>
