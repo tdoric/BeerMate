@@ -7,7 +7,17 @@ package hr.foi.air.beermate;
 public class Location {
 
     float latitude,longtitude;
-    String name;
+    String name,description;
+
+    public Location() {
+    }
+
+    public Location(float latitude, float longtitude, String name, String description) {
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        this.name = name;
+        this.description = description;
+    }
 
     public float getLatitude() {
         return latitude;
@@ -33,13 +43,11 @@ public class Location {
         this.name = name;
     }
 
-    public Location() {
-
+    public String getDescription() {
+        return description;
     }
 
-    public Location(float latitude, float longtitude, String name) {
-        this.latitude = latitude;
-        this.longtitude = longtitude;
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
