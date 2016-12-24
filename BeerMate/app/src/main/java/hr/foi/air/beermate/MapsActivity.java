@@ -61,11 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Location singleLocation = messageSnapshot.getValue(Location.class);
                     LatLng pubs = new LatLng(singleLocation.getLatitude(),singleLocation.getLongtitude());
                     mMap.addMarker(new MarkerOptions().position(pubs).title(singleLocation.getName()));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(pubs));
+                    mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(46.305746,16.336607) , 14.0f) );
 
-                    Log.d("ADebugTag", "Value: " + Float.toString(singleLocation.getLatitude()));
-                    Log.d("ADebugTag", "Value: " + Float.toString(singleLocation.getLongtitude()));
-                    Log.d("ADebugTag", "Value: " + singleLocation.getName());
                 }
 
 
