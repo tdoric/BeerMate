@@ -26,17 +26,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class BeersListActivity extends AppCompatActivity {
+
     private RecyclerView beersList;
     private DatabaseReference mReference;
     FirebaseRecyclerAdapter<Beer,BeerViewHolder> firebaseRecyclerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beers);
         mReference = FirebaseDatabase.getInstance().getReference().child("beers");
-
-
-
         beersList = (RecyclerView) findViewById(R.id.main_recycler);
         beersList.setHasFixedSize(true);
         beersList.setLayoutManager(new LinearLayoutManager(this));
@@ -46,22 +45,7 @@ public class BeersListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
-                Beer.class,R.layout.beer_row,BeerViewHolder.class,mReference
-        ) {
-            @Override
-            protected void populateViewHolder(BeerViewHolder viewHolder, Beer model, int position) {
-                viewHolder.setTitle(model.getName());
-                viewHolder.setDesc(model.getStrength());
-                viewHolder.setImage(getApplicationContext(),model.getImage());
-                viewHolder.setCountry(model.getCountry());
-                viewHolder.setBrewery(model.getBrewery());
-                viewHolder.setPercentage(model.getPercentage());
-            }
-        };
-
-        beersList.setAdapter(firebaseRecyclerAdapter);
+        showData();
     }
 
 
@@ -101,5 +85,26 @@ public class BeersListActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+
+    public void showData(){
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
+                Beer.class,R.layout.beer_row,BeerViewHolder.class,mReference
+        ) {
+            @Override
+            protected void populateViewHolder(BeerViewHolder viewHolder, Beer model, int position) {
+                viewHolder.setTitle(model.getName());
+                viewHolder.setDesc(model.getStrength());
+                viewHolder.setImage(getApplicationContext(),model.getImage());
+                viewHolder.setCountry(model.getCountry());
+                viewHolder.setBrewery(model.getBrewery());
+                viewHolder.setPercentage(model.getPercentage());
+            }
+        };
+
+        beersList.setAdapter(firebaseRecyclerAdapter);
     }
 }

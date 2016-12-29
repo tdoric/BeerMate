@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         String mail = editTextMail.getText().toString();
         String password  = editTextPasswordRegister.getText().toString();
+        String repeatP = editTextRepeatPassword.getText().toString();
+        String nameU = editTextUsername.getText().toString();
+
+        //checking if email and passwords are empty
+        if(TextUtils.isEmpty(nameU)){
+            Toast.makeText(this,"Please enter username",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(TextUtils.isEmpty(mail)){
+            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(!TextUtils.equals(password,repeatP)){
+            Toast.makeText(this,"Passwords not match",Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
         progressDialog.setMessage("Registering Please Wait...");
         progressDialog.show();
