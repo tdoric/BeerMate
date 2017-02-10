@@ -29,9 +29,9 @@
 
         </item>
         <item
-            android:id="@+id/ratingBeer"
+            android:id="@+id/typeBeer"
             android:orderInCategory="4"
-            android:title="Rating">
+            android:title="Type">
 
         </item>
 

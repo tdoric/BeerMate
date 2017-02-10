@@ -59,7 +59,7 @@ public class BeersListActivity extends AppCompatActivity {
                 something="c";
                 Toast.makeText(getApplicationContext(), "Treci", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.ratingBeer:
+            case R.id.typeBeer:
                 something="d";
                 Toast.makeText(getApplicationContext(), "Cetvrti", Toast.LENGTH_LONG).show();
                 return true;
@@ -97,7 +97,7 @@ public class BeersListActivity extends AppCompatActivity {
                     query=addPercentageCriteria(newText);
                 }
                 else if(something=="d"){
-                    query=addRatingCriteria(newText);
+                    query=addTypeCriteria(newText);
                 }
 
 
@@ -174,7 +174,7 @@ public class BeersListActivity extends AppCompatActivity {
     }
 
     public Query addPercentageCriteria(String name ){
-        query = mReference.orderByChild("percentage").equalTo(Float.parseFloat(name));
+        query = mReference.orderByChild("percentage").equalTo(name);
         return query;
     }
     public Query addNameCriteria(String name ){
@@ -185,8 +185,8 @@ public class BeersListActivity extends AppCompatActivity {
         query = mReference.orderByChild("country").equalTo(name);
         return query;
     }
-    public Query addRatingCriteria(String name ){
-        query = mReference.orderByChild("country").equalTo(name);
+    public Query addTypeCriteria(String name ){
+        query = mReference.orderByChild("strength").equalTo(name);
         return query;
     }
 
