@@ -6,17 +6,35 @@
     android:title="Search"
     android:icon="@android:drawable/ic_menu_search"
     app:actionViewClass="android.widget.SearchView"
-    app:showAsAction="always"
-    >
-
-</item>
-    <item android:id="@+id/nesto"
-        android:title="Search"
-        android:icon="@android:drawable/ic_menu_search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"
-        >
-
+    app:showAsAction="always">
     </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nameBeer"
+            android:orderInCategory="1"
+            android:title="Name">
+
+        </item>
+        <item
+            android:id="@+id/countryBeer"
+            android:orderInCategory="2"
+            android:title="Country">
+
+        </item>
+        <item
+            android:id="@+id/percentageBeer"
+            android:orderInCategory="3"
+            android:title="Percentage">
+
+        </item>
+        <item
+            android:id="@+id/ratingBeer"
+            android:orderInCategory="4"
+            android:title="Rating">
+
+        </item>
+
+    </group>
 
 </menu>
