@@ -3,10 +3,15 @@ package hr.foi.air.beermate;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import hr.foi.air.beermate.StrategyRateBeer.ContextBeer;
+import hr.foi.air.beermate.StrategyRateBeer.StarRating;
+import hr.foi.air.beermate.StrategyRateBeer.TapRating;
 
 /**
  * Created by Tomislav on 11/9/2016.
@@ -14,11 +19,32 @@ import com.squareup.picasso.Picasso;
 
 public  class BeerViewHolder extends  RecyclerView.ViewHolder {
     View mView;
+    ContextBeer contextBeer;
+
+
     public BeerViewHolder(View itemView) {
         super(itemView);
 
         mView=itemView;
     }
+
+    public void setRateButton(final String typeOfRating, final String id, final String name, final float averageRate, final int totalVotes, final int numberOfVotes) {
+        final Button rankBtn = (Button) mView.findViewById(R.id.buttonRate);
+        rankBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (typeOfRating.equals("1")) { // ovaj tip je za star rating
+                    contextBeer  = new ContextBeer(new StarRating(mView));
+                    contextBeer.executeStrategyBeer(id, name, averageRate, totalVotes, numberOfVotes);
+                } else if (typeOfRating.equals("2")) { // ovaj tip je za tap rating
+                    contextBeer = new ContextBeer(new TapRating(mView));
+                    contextBeer.executeStrategyBeer(id, name, averageRate, totalVotes, numberOfVotes);
+                }
+            }
+        });
+    }
+
+
 
     public void setTitle(String title){
 
