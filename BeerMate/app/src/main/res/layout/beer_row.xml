@@ -94,6 +94,39 @@
             android:paddingRight="15dp"
             android:paddingBottom="15dp" />
 
+        <TextView
+            android:id="@+id/labelAverageRate"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Average rate"
+            android:textColor="@color/authui_colorActivated" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_averageRate"
+            android:text="Average rate goes here"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+        <TextView
+            android:id="@+id/labelVotes"
+            android:layout_width="match_parent"
+            android:background="#07000000"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Votes"
+            android:textColor="@color/authui_colorActivated" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_votes"
+            android:text="Number of votes goes here"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+
     </LinearLayout>
 
 
