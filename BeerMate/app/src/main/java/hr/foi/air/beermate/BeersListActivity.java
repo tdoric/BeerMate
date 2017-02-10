@@ -99,9 +99,6 @@ public class BeersListActivity extends AppCompatActivity {
                 else if(something=="d"){
                     query=addRatingCriteria(newText);
                 }
-                else if(something=="e"){
-                    query=addVotesCriteria(newText);
-                }
 
 
                 firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
@@ -124,6 +121,8 @@ public class BeersListActivity extends AppCompatActivity {
                         float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
                         viewHolder.setAverageRate(average);
                         viewHolder.setVotes(model.getNumberOfVotes());
+
+                        viewHolder.setRateButton("2", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 
 
                     }
@@ -164,7 +163,7 @@ public class BeersListActivity extends AppCompatActivity {
                 viewHolder.setVotes(model.getNumberOfVotes());
 
 
-
+                viewHolder.setRateButton("1", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 
 
 
@@ -175,7 +174,7 @@ public class BeersListActivity extends AppCompatActivity {
     }
 
     public Query addPercentageCriteria(String name ){
-        query = mReference.orderByChild("percentage").startAt(Float.parseFloat(name));
+        query = mReference.orderByChild("percentage").equalTo(Float.parseFloat(name));
         return query;
     }
     public Query addNameCriteria(String name ){
@@ -188,10 +187,6 @@ public class BeersListActivity extends AppCompatActivity {
     }
     public Query addRatingCriteria(String name ){
         query = mReference.orderByChild("country").equalTo(name);
-        return query;
-    }
-    public Query addVotesCriteria(String name ){
-        query = mReference.orderByChild("numberOfVotes").startAt(Float.parseFloat(name));
         return query;
     }
 
