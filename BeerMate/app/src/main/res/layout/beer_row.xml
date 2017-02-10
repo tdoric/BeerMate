@@ -10,22 +10,30 @@
 
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="216dp"
-        android:id="@+id/post_image"
-        android:src="@drawable/com_facebook_profile_picture_blank_portrait"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:layout_marginStart="75dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/post_title"
-        android:text="Post title goes here"
-        android:padding="15dp"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="216dp"
+            android:id="@+id/post_image"
+            android:src="@drawable/com_facebook_profile_picture_blank_portrait"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="75dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_title"
+            android:text="Post title goes here"
+            android:padding="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/buttonRate"
+            android:fontFamily="Roboto"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Rate it!" />
         <TextView
             android:id="@+id/labelType"
             android:layout_width="match_parent"
@@ -34,14 +42,14 @@
             android:textSize="14sp"
             android:text="Type"
             android:textColor="@color/authui_colorActivated" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/post_text"
-        android:text="Type of beer"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="15dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_text"
+            android:text="Type of beer"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
         <TextView
             android:id="@+id/labelPercentage"
             android:layout_width="match_parent"
@@ -93,7 +101,6 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp" />
-
         <TextView
             android:id="@+id/labelAverageRate"
             android:layout_width="match_parent"
@@ -126,6 +133,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingBottom="15dp" />
+
 
     </LinearLayout>
 
