@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -23,7 +24,6 @@ public class BeersListActivity extends AppCompatActivity {
     private DatabaseReference mReference;
     FirebaseRecyclerAdapter<Beer,BeerViewHolder> firebaseRecyclerAdapter;
     Query query;
-
     String something="a";
 
     @Override
@@ -69,74 +69,84 @@ public class BeersListActivity extends AppCompatActivity {
 
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_search,menu);
         MenuItem menuItem = menu.findItem(R.id.menuSearch);
         SearchView searchView =(SearchView) MenuItemCompat.getActionView(menuItem);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                if(something=="a") {
-                    query = addNameCriteria(newText);
-                }else if(something=="b"){
-
-                    query= addCountryCriteria(newText);
+            searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
+                    showData();
+                    return false;
                 }
-                else if(something=="c"){
-                    query=addPercentageCriteria(newText);
-                }
-                else if(something=="d"){
-                    query=addTypeCriteria(newText);
+            });
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
                 }
 
+                @Override
+                public boolean onQueryTextChange(String newText) {
 
-                firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
-                        Beer.class,R.layout.beer_row,BeerViewHolder.class,query
-                ) {
-                    @Override
-                    protected void populateViewHolder(BeerViewHolder viewHolder, Beer model, int position) {
+                    if (something == "a") {
+                        query = addNameCriteria(newText);
+                    } else if (something == "b") {
 
-                        viewHolder.setTitle(model.getName());
-                        viewHolder.setDesc(model.getStrength());
-                        viewHolder.setImage(getApplicationContext(),model.getImage());
-                        viewHolder.setCountry(model.getCountry());
-                        viewHolder.setBrewery(model.getBrewery());
-                        viewHolder.setPercentage(model.getPercentage());
-
-
-                        model.setUid(this.getRef(position).getKey());
-
-
-                        float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
-                        viewHolder.setAverageRate(average);
-                        viewHolder.setVotes(model.getNumberOfVotes());
-
-                        viewHolder.setRateButton("2", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
-
-
+                        query = addCountryCriteria(newText);
+                    } else if (something == "c") {
+                        query = addPercentageCriteria(newText);
+                    } else if (something == "d") {
+                        query = addTypeCriteria(newText);
                     }
-                };
 
-                beersList.setAdapter(firebaseRecyclerAdapter);
 
-                return false;
-            }
+                    firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
+                            Beer.class, R.layout.beer_row, BeerViewHolder.class, query
+                    ) {
+                        @Override
+                        protected void populateViewHolder(BeerViewHolder viewHolder, Beer model, int position) {
 
-        });
+                            viewHolder.setTitle(model.getName());
+                            viewHolder.setDesc(model.getStrength());
+                            viewHolder.setImage(getApplicationContext(), model.getImage());
+                            viewHolder.setCountry(model.getCountry());
+                            viewHolder.setBrewery(model.getBrewery());
+                            viewHolder.setPercentage(model.getPercentage());
+
+
+                            model.setUid(this.getRef(position).getKey());
+
+
+                            float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
+                            viewHolder.setAverageRate(average);
+                            viewHolder.setVotes(model.getNumberOfVotes());
+
+                            viewHolder.setRateButton("2", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
+
+
+                        }
+                    };
+
+                    beersList.setAdapter(firebaseRecyclerAdapter);
+
+                    return false;
+                }
+
+            });
+
+
         return super.onCreateOptionsMenu(menu);
     }
-
 
 
 
@@ -153,16 +163,11 @@ public class BeersListActivity extends AppCompatActivity {
                 viewHolder.setBrewery(model.getBrewery());
                 viewHolder.setPercentage(model.getPercentage());
 
-
-
                 model.setUid(this.getRef(position).getKey());  //linija kojom pokusavam dohvatiti key
-
 
                 float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
                 viewHolder.setAverageRate(average);
                 viewHolder.setVotes(model.getNumberOfVotes());
-
-
                 viewHolder.setRateButton("1", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 
 
