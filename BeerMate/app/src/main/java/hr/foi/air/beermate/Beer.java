@@ -6,23 +6,37 @@ package hr.foi.air.beermate;
 
 public class Beer {
 
+    String uid;
     String name;
     String strength;
     String image;
     String country;
     String brewery;
     Float percentage;
+    int totalVotes;
+    int numberOfVotes;
 
-    public Beer(String name, String strength, String image, String country, String brewery, Float percentage) {
+    public Beer(String uid,String name, String strength, String image, String country, String brewery, Float percentage,int totalVotes,int numberOfVotes) {
+        this.uid= uid;
         this.name = name;
         this.strength = strength;
         this.image = image;
         this.country = country;
         this.brewery = brewery;
         this.percentage = percentage;
+        this.totalVotes=totalVotes;
+        this.numberOfVotes=numberOfVotes;
     }
 
     public Beer() {
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
@@ -71,5 +85,21 @@ public class Beer {
 
     public void setPercentage(Float percentage) {
         this.percentage = percentage;
+    }
+
+    public int getTotalVotes() {
+        return totalVotes;
+    }
+
+    public void setTotalVotes(int totalVotes) {
+        this.totalVotes = totalVotes;
+    }
+
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
     }
 }
