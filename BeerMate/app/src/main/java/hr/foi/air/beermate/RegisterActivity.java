@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnRegister,btnBack;
@@ -43,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
+
     private void insertData(String insertMail, String insertName, String language, String rating ) {
         mReference = FirebaseDatabase.getInstance().getReference().child("users");
         User user = new User();
@@ -56,10 +59,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void registerUser(){
 
-        String mail = editTextMail.getText().toString();
+        final String mail = editTextMail.getText().toString();
         String password  = editTextPasswordRegister.getText().toString();
         String repeatP = editTextRepeatPassword.getText().toString();
-        String nameU = editTextUsername.getText().toString();
+        final String nameU = editTextUsername.getText().toString();
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(nameU)){
@@ -90,6 +93,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(RegisterActivity.this,"Registering successfully ",Toast.LENGTH_SHORT).show();
+                    insertData(mail,nameU,"1","1");
                     Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
                     startActivity(i);
                 }
@@ -99,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
-        insertData(mail,nameU,"1","1");
+
     }
 
     @Override
