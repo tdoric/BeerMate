@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.text.DecimalFormat;
+
 public class BeersListActivity extends AppCompatActivity {
 
     private RecyclerView beersList;
@@ -126,9 +128,10 @@ public class BeersListActivity extends AppCompatActivity {
 
                             model.setUid(this.getRef(position).getKey());
 
-
+                            DecimalFormat df2 = new DecimalFormat(".#");
                             float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
-                            viewHolder.setAverageRate(average);
+
+                            viewHolder.setAverageRate( df2.format(average));
                             viewHolder.setVotes(model.getNumberOfVotes());
 
                             viewHolder.setRateButton("2", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
@@ -164,9 +167,9 @@ public class BeersListActivity extends AppCompatActivity {
                 viewHolder.setPercentage(model.getPercentage());
 
                 model.setUid(this.getRef(position).getKey());  //linija kojom pokusavam dohvatiti key
-
+                DecimalFormat df2 = new DecimalFormat(".#");
                 float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
-                viewHolder.setAverageRate(average);
+                viewHolder.setAverageRate(df2.format(average));
                 viewHolder.setVotes(model.getNumberOfVotes());
                 viewHolder.setRateButton("1", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 

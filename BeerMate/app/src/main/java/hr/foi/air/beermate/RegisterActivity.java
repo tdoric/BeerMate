@@ -15,12 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnRegister,btnBack;
     EditText editTextUsername,editTextMail,editTextPasswordRegister,editTextRepeatPassword;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference mReference;
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         btnBack.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    private void insertData(String insertMail, String insertName, String language, String rating ) {
+        mReference = FirebaseDatabase.getInstance().getReference().child("users");
+        User user = new User();
+        user.setUserName(insertName);
+        user.setUserLanguage(language);
+        user.setUserRating(rating);
+        user.setUserMail(insertMail);
+        mReference.push().setValue(user);
+
     }
 
     private void registerUser(){
@@ -85,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
-
+        insertData(mail,nameU,"1","1");
     }
 
     @Override

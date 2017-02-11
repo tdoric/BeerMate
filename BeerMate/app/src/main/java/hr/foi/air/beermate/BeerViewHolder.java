@@ -75,7 +75,7 @@ public  class BeerViewHolder extends  RecyclerView.ViewHolder {
         Picasso.with(ctx).load(image).into(post_image);
     }
 
-    public void setAverageRate(Float averageRate){
+    public void setAverageRate(String averageRate){
         TextView post_averageRate = (TextView)mView.findViewById(R.id.post_averageRate);
         post_averageRate.setText(String.valueOf(averageRate));
     }
