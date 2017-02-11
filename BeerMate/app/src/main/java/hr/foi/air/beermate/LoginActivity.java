@@ -12,10 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonSignup;
     private ProgressDialog progressDialog;
     private TextView  textViewRegister;
+    private DatabaseReference mReference;
 
 
     //defining firebaseauth object
@@ -54,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void loginUser(){
 
         //getting email and password from edit texts
-        String email = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
@@ -81,8 +90,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
               if(task.isSuccessful()){
                   progressDialog.dismiss();
                   Toast.makeText(LoginActivity.this,"Login successfully ",Toast.LENGTH_SHORT).show();
-                  Intent i = new Intent(LoginActivity.this,MainActivity.class);
-                  startActivity(i);
+                  mReference = FirebaseDatabase.getInstance().getReference().child("users");
+                  mReference.addValueEventListener(new ValueEventListener() {
+                      @Override
+                      public void onDataChange(DataSnapshot dataSnapshot) {
+                          for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                              User user = messageSnapshot.getValue(User.class);
+                              if(email.equals(user.getUserMail())){
+                                  Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                                  i.putExtra("userId",messageSnapshot.getKey());
+                                  i.putExtra("userRating",user.getUserRating());
+                                  Toast.makeText(LoginActivity.this,user.getUserRating(),Toast.LENGTH_LONG).show();
+                                  startActivity(i);
+                              }
+
+
+
+                          }
+                      }
+
+                      @Override
+                      public void onCancelled(DatabaseError databaseError) {
+
+                      }
+                  });
+
+
               }
                else{
                   progressDialog.dismiss();

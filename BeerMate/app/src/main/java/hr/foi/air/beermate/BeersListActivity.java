@@ -27,6 +27,8 @@ public class BeersListActivity extends AppCompatActivity {
     FirebaseRecyclerAdapter<Beer,BeerViewHolder> firebaseRecyclerAdapter;
     Query query;
     String something="a";
+    String userId = "";
+    String userRating = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class BeersListActivity extends AppCompatActivity {
         beersList = (RecyclerView) findViewById(R.id.main_recycler);
         beersList.setHasFixedSize(true);
         beersList.setLayoutManager(new LinearLayoutManager(this));
+        userId = getIntentUserId();
+        userRating = getIntentUserRating();
 
     }
 
@@ -134,7 +138,7 @@ public class BeersListActivity extends AppCompatActivity {
                             viewHolder.setAverageRate( df2.format(average));
                             viewHolder.setVotes(model.getNumberOfVotes());
 
-                            viewHolder.setRateButton("2", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
+                            viewHolder.setRateButton(userRating, model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 
 
                         }
@@ -171,7 +175,7 @@ public class BeersListActivity extends AppCompatActivity {
                 float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
                 viewHolder.setAverageRate(df2.format(average));
                 viewHolder.setVotes(model.getNumberOfVotes());
-                viewHolder.setRateButton("1", model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
+                viewHolder.setRateButton(userRating, model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
 
 
 
@@ -196,6 +200,22 @@ public class BeersListActivity extends AppCompatActivity {
     public Query addTypeCriteria(String name ){
         query = mReference.orderByChild("strength").equalTo(name);
         return query;
+    }
+
+    private String getIntentUserId() {
+        String userId = "";
+        if (getIntent() != null) {
+            userId = getIntent().getStringExtra("userId");
+        }
+        return userId;
+    }
+
+    private String getIntentUserRating() {
+        String userRating = "";
+        if (getIntent() != null) {
+            userRating = getIntent().getStringExtra("userRating");
+        }
+        return userRating;
     }
 
 }

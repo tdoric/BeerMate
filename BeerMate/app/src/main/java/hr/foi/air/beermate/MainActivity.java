@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openBeers(View view){
         Intent intent = new Intent(this,BeersListActivity.class);
+        intent.putExtra("userId", getIntentUserId());
+        intent.putExtra("userRating", getIntentUserRating());
         startActivity(intent);
     }
 
@@ -33,5 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
+    }
+
+    private String getIntentUserId() {
+        String userId = "";
+        if (getIntent() != null) {
+            userId = getIntent().getStringExtra("userId");
+        }
+        return userId;
+    }
+
+    private String getIntentUserRating() {
+        String userRating = "";
+        if (getIntent() != null) {
+            userRating = getIntent().getStringExtra("userRating");
+        }
+        return userRating;
     }
 }
