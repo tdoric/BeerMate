@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
        startActivity(i);
     }
 
+    public void openSettings (View view){
+        Intent i = new Intent(this,MapsActivity.class);
+        startActivity(i);
+    }
+
+
+
+
     public void logOut(View view){
 
         Intent i = new Intent(this, LoginActivity.class);
