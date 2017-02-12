@@ -5,6 +5,11 @@
     android:orientation="vertical"
     android:padding="2dip">
 
+    <TextView android:text="Locations:" android:id="@+id/avLoc"
+        android:textSize="24dp" android:layout_marginTop="10dp"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
     <ListView
         android:text="Pubs Names"
         android:layout_width="wrap_content"

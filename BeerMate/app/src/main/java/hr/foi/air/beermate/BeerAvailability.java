@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Tomislav on 2/12/2017.
@@ -32,6 +34,7 @@ public class BeerAvailability extends RecyclerView.ViewHolder {
     Dialog showDialog;
     private DatabaseReference mReference;
     ArrayAdapter arrayAdapter;
+    FirebaseListAdapter<String> listAdapter;
 
 
     public BeerAvailability(View itemView) {
@@ -40,24 +43,23 @@ public class BeerAvailability extends RecyclerView.ViewHolder {
     }
 
 
+
     public  void showAvailability(String id){
 
-        showDialog = new Dialog(mView.getContext(), R.style.FullHeightDialog);
+        showDialog = new Dialog(mView.getContext());
         showDialog.setContentView(R.layout.availability_dialog);
         showDialog.setCancelable(true);
         mReference = FirebaseDatabase.getInstance().getReference().child("beers").child(id).child("availability");
         final ListView listView = (ListView) showDialog.findViewById(R.id.pub_show_list);
-        final ArrayList<String> names = new ArrayList<String>();
+        final List<String> names = new ArrayList<String>();
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     LocationBeer locationBeer = messageSnapshot.getValue(LocationBeer.class);
-                    Toast.makeText(mView.getContext(), locationBeer.getName(), Toast.LENGTH_LONG).show();
-                    names.add(locationBeer.getName());
-
+                    names.add(locationBeer.getName().toString());
                 }
-                arrayAdapter = new ArrayAdapter(mView.getContext(),android.R.layout.simple_list_item_1,names);
+                arrayAdapter = new ArrayAdapter<String>(mView.getContext(),android.R.layout.simple_list_item_1,names);
                 listView.setAdapter(arrayAdapter);
 
             }
@@ -67,10 +69,6 @@ public class BeerAvailability extends RecyclerView.ViewHolder {
 
             }
         });
-
-
-
-
 
         Button cancelBtn = (Button) showDialog.findViewById(R.id.pub_show_cancel);
         cancelBtn.setOnClickListener(new View.OnClickListener() {

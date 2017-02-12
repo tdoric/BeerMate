@@ -100,7 +100,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                   Intent i = new Intent(LoginActivity.this,MainActivity.class);
                                   i.putExtra("userId",messageSnapshot.getKey());
                                   i.putExtra("userRating",user.getUserRating());
-                                  Toast.makeText(LoginActivity.this,user.getUserRating(),Toast.LENGTH_LONG).show();
                                   startActivity(i);
                               }
 
