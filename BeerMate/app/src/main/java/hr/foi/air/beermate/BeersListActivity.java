@@ -1,5 +1,6 @@
 package hr.foi.air.beermate;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ public class BeersListActivity extends AppCompatActivity {
     private RecyclerView beersList;
     private DatabaseReference mReference;
     FirebaseRecyclerAdapter<Beer,BeerViewHolder> firebaseRecyclerAdapter;
+    ArrayAdapter<String> arrayAdapter ;
     Query query;
     String something="a";
     String userId = "";
@@ -40,6 +43,7 @@ public class BeersListActivity extends AppCompatActivity {
         beersList.setLayoutManager(new LinearLayoutManager(this));
         userId = getIntentUserId();
         userRating = getIntentUserRating();
+
 
     }
 
@@ -139,6 +143,7 @@ public class BeersListActivity extends AppCompatActivity {
                             viewHolder.setVotes(model.getNumberOfVotes());
 
                             viewHolder.setRateButton(userRating, model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
+                            viewHolder.setShowButton(model.getUid());
 
 
                         }
@@ -158,6 +163,9 @@ public class BeersListActivity extends AppCompatActivity {
 
 
     public void showData(){
+
+
+
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
                 Beer.class,R.layout.beer_row,BeerViewHolder.class,mReference
         ) {
@@ -176,6 +184,9 @@ public class BeersListActivity extends AppCompatActivity {
                 viewHolder.setAverageRate(df2.format(average));
                 viewHolder.setVotes(model.getNumberOfVotes());
                 viewHolder.setRateButton(userRating, model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
+                viewHolder.setShowButton(model.getUid());
+
+
 
 
 
@@ -184,6 +195,8 @@ public class BeersListActivity extends AppCompatActivity {
 
         beersList.setAdapter(firebaseRecyclerAdapter);
     }
+
+
 
     public Query addPercentageCriteria(String name ){
         query = mReference.orderByChild("percentage").equalTo(name);

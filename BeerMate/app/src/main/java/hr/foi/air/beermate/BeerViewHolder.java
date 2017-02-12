@@ -45,6 +45,18 @@ public  class BeerViewHolder extends  RecyclerView.ViewHolder {
     }
 
 
+    public void setShowButton(final String id){
+        final Button showAv =  (Button) mView.findViewById(R.id.buttonShowPubs);
+        showAv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BeerAvailability beerAvailability = new BeerAvailability(mView);
+                beerAvailability.showAvailability(id);
+            }
+        });
+    }
+
+
 
     public void setTitle(String title){
 

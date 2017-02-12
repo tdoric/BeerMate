@@ -5,11 +5,15 @@
     android:orientation="vertical"
     android:padding="2dip">
 
-    <TextView android:text="Pubs Names" android:id="@+id/pub_show_dialog"
-        android:textSize="24dp" android:layout_marginTop="10dp"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
+    <ListView
+        android:text="Pubs Names"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pub_show_list"
+        android:textSize="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        ></ListView>
 
     <Button android:id="@+id/pub_show_cancel"
         android:layout_height="wrap_content"
