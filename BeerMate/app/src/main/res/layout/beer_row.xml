@@ -34,6 +34,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="Rate it!" />
+        <Button
+            android:id="@+id/buttonShowPubs"
+            android:fontFamily="Roboto"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Availability" />
         <TextView
             android:id="@+id/labelType"
             android:layout_width="match_parent"
