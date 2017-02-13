@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                   Intent i = new Intent(LoginActivity.this,MainActivity.class);
                                   i.putExtra("userId",messageSnapshot.getKey());
                                   i.putExtra("userRating",user.getUserRating());
+                                  i.putExtra("userName",user.getUserName());
                                   startActivity(i);
                               }
 

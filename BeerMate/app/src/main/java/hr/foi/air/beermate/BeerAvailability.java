@@ -51,13 +51,15 @@ public class BeerAvailability extends RecyclerView.ViewHolder {
         showDialog.setCancelable(true);
         mReference = FirebaseDatabase.getInstance().getReference().child("beers").child(id).child("availability");
         final ListView listView = (ListView) showDialog.findViewById(R.id.pub_show_list);
-        final List<String> names = new ArrayList<String>();
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> names = new ArrayList<String>();
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     LocationBeer locationBeer = messageSnapshot.getValue(LocationBeer.class);
-                    names.add(locationBeer.getName().toString());
+                    if(!names.contains(locationBeer.getName().toString())) {
+                        names.add(locationBeer.getName().toString());
+                    }
                 }
                 arrayAdapter = new ArrayAdapter<String>(mView.getContext(),android.R.layout.simple_list_item_1,names);
                 listView.setAdapter(arrayAdapter);

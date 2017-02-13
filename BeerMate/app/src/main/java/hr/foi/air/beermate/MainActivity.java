@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,BeersListActivity.class);
         intent.putExtra("userId", getIntentUserId());
         intent.putExtra("userRating", getIntentUserRating());
+        intent.putExtra("userName", getIntentUserName());
         startActivity(intent);
     }
 
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSettings (View view){
-        Intent i = new Intent(this,MapsActivity.class);
+        Intent i = new Intent(this,SettingsActivity.class);
+        i.putExtra("userId", getIntentUserId());
+        i.putExtra("userRating", getIntentUserRating());
+        i.putExtra("userName", getIntentUserName());
         startActivity(i);
     }
-
-
-
 
     public void logOut(View view){
 
@@ -59,5 +60,12 @@ public class MainActivity extends AppCompatActivity {
             userRating = getIntent().getStringExtra("userRating");
         }
         return userRating;
+    }
+    private String getIntentUserName() {
+        String userName = "";
+        if (getIntent() != null) {
+            userName = getIntent().getStringExtra("userName");
+        }
+        return userName;
     }
 }
