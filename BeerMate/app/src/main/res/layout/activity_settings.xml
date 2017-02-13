@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="hr.foi.air.beermate.SettingsActivity">
+    tools:context="hr.foi.air.beermate.SettingsActivity"
+    android:background="@mipmap/background">
 
 
 
@@ -22,58 +23,82 @@
         android:layout_alignParentBottom="true">
 
         <TextView
-            android:text="@string/naslovLogin"
+            android:text="Choose rating type:"
             android:fontFamily="Roboto"
             android:textAlignment="center"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:textColor="#2f2f2f"
+            android:layout_gravity="center_horizontal"
             android:id="@+id/textView5" />
-        <Button
-            android:id="@+id/btnSetStar"
-            android:layout_width="match_parent"
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:fontFamily="Roboto"
-            android:textSize="20dp"
-            android:text="Star ranking"
-            android:onClick="updateStar"
-            />
-        <Button
-            android:id="@+id/btnSetTap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:fontFamily="Roboto"
-            android:textSize="20dp"
-            android:text="Tap ranking"
-            android:onClick="updateTap"/>
+            >
+
+            <Button
+                android:id="@+id/btnSetStar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:fontFamily="Roboto"
+                android:textSize="15dp"
+                android:text="Star rating"
+                android:onClick="updateStar"
+                android:layout_gravity="left"
+
+                />
+
+            <Button
+                android:id="@+id/btnSetTap"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="Roboto"
+                android:textSize="15dp"
+                android:text="Tap rating"
+                android:layout_gravity="right"
+
+                android:onClick="updateTap"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignBaseline="@+id/btnSetStar"
+                android:layout_alignBottom="@+id/btnSetStar"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp" />
+
+        </RelativeLayout>
 
         <TextView
-            android:text="Username"
+            android:text="Choose new Username:"
             android:fontFamily="Roboto"
             android:textAlignment="center"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:textColor="#2f2f2f"
+            android:layout_gravity="center_horizontal"
             android:id="@+id/textView56" />
 
         <Button
             android:id="@+id/btnCatchUsernaame"
-            android:layout_width="match_parent"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="Roboto"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:text="Catch username"
+            android:layout_gravity="center_horizontal"
             android:onClick="catchUsername"/>
 
         <EditText
@@ -89,19 +114,25 @@
 
         <Button
             android:id="@+id/btnSetUsername"
-            android:layout_width="match_parent"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="Roboto"
-            android:textSize="20dp"
-            android:text="Change"
+            android:textSize="15dp"
+            android:text="Change Username"
+            android:layout_gravity="center_horizontal"
             android:onClick="updateUserName"/>
 
+        <Button
+            android:text="CANCEL"
+            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="Roboto"
+            android:textSize="15dp"
+            android:id="@+id/button2" />
 
 
-
-
-
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

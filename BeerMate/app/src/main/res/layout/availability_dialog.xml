@@ -3,10 +3,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="2dip">
+    android:padding="2dip"
+    android:background="@mipmap/background">
 
     <TextView android:text="Locations:" android:id="@+id/avLoc"
         android:textSize="24dp" android:layout_marginTop="10dp"
+        android:fontFamily="Roboto"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
@@ -15,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pub_show_list"
+        android:fontFamily="Roboto"
         android:textSize="24dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
