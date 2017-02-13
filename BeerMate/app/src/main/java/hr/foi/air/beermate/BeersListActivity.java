@@ -113,8 +113,10 @@ public class BeersListActivity extends AppCompatActivity {
                     } else if (something == "b") {
 
                         query = addCountryCriteria(newText);
-                    } else if (something == "c") {
-                        query = addPercentageCriteria(newText);
+                    } else if (something == "c" && !newText.equals("")) {
+                        Double novo =  Double.valueOf(newText);
+                        query = addPercentageCriteria(novo);
+
                     } else if (something == "d") {
                         query = addTypeCriteria(newText);
                     }
@@ -198,7 +200,7 @@ public class BeersListActivity extends AppCompatActivity {
 
 
 
-    public Query addPercentageCriteria(String name ){
+    public Query addPercentageCriteria(Double name ){
         query = mReference.orderByChild("percentage").equalTo(name);
         return query;
     }

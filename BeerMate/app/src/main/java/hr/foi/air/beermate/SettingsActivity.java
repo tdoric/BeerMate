@@ -1,5 +1,6 @@
 package hr.foi.air.beermate;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -75,7 +78,17 @@ public class SettingsActivity extends AppCompatActivity {
         }else {
             mReference = FirebaseDatabase.getInstance().getReference().child("users").child(getIntentUserId());
             mReference.child("userName").setValue(editText.getText().toString());
+            editText.setEnabled(false);
         }
+
+    }
+
+    public void closeSettings(View view) {
+        Intent i = new Intent(SettingsActivity.this,MainActivity.class);
+        i.putExtra("userId", getIntentUserId());
+        i.putExtra("userRating", getIntentUserRating());
+        i.putExtra("userName", getIntentUserName());
+        startActivity(i);
 
     }
 }
