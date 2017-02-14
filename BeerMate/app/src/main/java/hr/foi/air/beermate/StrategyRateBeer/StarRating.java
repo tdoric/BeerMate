@@ -15,6 +15,11 @@ import hr.foi.air.beermate.RatingUtil;
  * Created by Tomislav on 2/8/2017.
  */
 
+/**
+ * Klasa za ocjenjivanje modela zvjezdicama
+ * Implementira sucelje StrategyBeer
+ */
+
 public class StarRating extends RecyclerView.ViewHolder implements StrategyBeer {
     View mView;
     Dialog rankDialog;
@@ -25,6 +30,17 @@ public class StarRating extends RecyclerView.ViewHolder implements StrategyBeer 
         super(itemView);
         mView=itemView;
     }
+
+    /**
+     * Metoda koja na osnovu sljedecih parametara
+     * @param id
+     * @param name
+     * @param averageRate
+     * @param totalVotes
+     * @param numberOfVotes
+     *
+     * izvrsava ocjenjivanje zvjezdicama te prije toga poziva dijalog na kojem je prikazana funkcionalnost ocjenjivanja
+     */
     @Override
     public void rateBeer(final String id, String name, float averageRate,final int totalVotes, final int numberOfVotes) {
         rankDialog = new Dialog(mView.getContext(), R.style.FullHeightDialog);

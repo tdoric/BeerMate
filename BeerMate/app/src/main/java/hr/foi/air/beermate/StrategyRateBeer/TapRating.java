@@ -15,6 +15,10 @@ import hr.foi.air.beermate.RatingUtil;
  * Created by Tomislav on 2/8/2017.
  */
 
+/**
+ * Klasa za ocjenjivanje modela tapkanjem
+ * Implementira sucelje StrategyBeer
+ */
 public class TapRating extends RecyclerView.ViewHolder implements StrategyBeer {
     View mView;
     Dialog rankDialog;
@@ -26,7 +30,16 @@ public class TapRating extends RecyclerView.ViewHolder implements StrategyBeer {
         mView=itemView;
     }
 
-
+    /**Metoda koja na osnovu parametara
+     *
+     * @param id
+     * @param name
+     * @param averageRate
+     * @param totalVotes
+     * @param numberOfVotes
+     *
+     * izvrsava ocjenjivanje modela. Prije ocjenjivanja poziva dijalog na kojem se prikazuje funkcionalnost ocjenjivanja
+     */
     @Override
     public void rateBeer( final String id, String name, float averageRate, final int totalVotes, final int numberOfVotes) {
 

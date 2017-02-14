@@ -28,6 +28,9 @@ import java.util.List;
  * Created by Tomislav on 2/12/2017.
  */
 
+/**
+ * Klasa za prikaz dostupnosti modela
+ */
 public class BeerAvailability extends RecyclerView.ViewHolder {
 
     View mView;
@@ -43,6 +46,12 @@ public class BeerAvailability extends RecyclerView.ViewHolder {
     }
 
 
+    /**
+     * Metoda koja na osnovu
+     * @param id
+     * odreduje o kojem se modelu iz baze podataka radi te na osnovu toga dohvaca podatke iz baze podataka
+     * te ih prikazuje u posebnom dialogu
+     */
 
     public  void showAvailability(String id){
 

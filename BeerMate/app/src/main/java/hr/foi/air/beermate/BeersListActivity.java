@@ -22,6 +22,10 @@ import com.google.firebase.database.Query;
 
 import java.text.DecimalFormat;
 
+
+/**
+ * Activity koji sluzi za prikaz i filtiranje modela po filterima
+ */
 public class BeersListActivity extends AppCompatActivity {
 
     private RecyclerView beersList;
@@ -31,6 +35,9 @@ public class BeersListActivity extends AppCompatActivity {
     String something="a";
     String userId = "";
     String userRating = "";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,13 @@ public class BeersListActivity extends AppCompatActivity {
         showData();
     }
 
+    /**
+     * Metoda koja na osnovu
+     * @param item
+     *postavlja globalno definiranu varijablu koja se koristi u nastavku activitya za potrebe
+     * izvodenja drugih metoda
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int idItem = item.getItemId();
@@ -77,7 +91,13 @@ public class BeersListActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Metoda koja postavlja pocetni action bar prema definiranom layoutu
+     * te  kada se klikne odnosno mjenja text u dohvacenom searchViewu izvrsava se
+     * upit prema primljenoj globalnoj varijabli.
+     * @param menu
+     * @return
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,7 +116,11 @@ public class BeersListActivity extends AppCompatActivity {
                 }
             });
 
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        /**
+         * Listener koji promjenom teksta u searcViewu izvršava metode
+         */
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
 
                 @Override
@@ -104,6 +128,11 @@ public class BeersListActivity extends AppCompatActivity {
                     return false;
                 }
 
+            /**
+             * Metoda koja na osnovu teksta iz searchView-a odabire upit
+             * @param newText
+             * @return
+             */
                 @Override
                 public boolean onQueryTextChange(String newText) {
 
@@ -122,7 +151,11 @@ public class BeersListActivity extends AppCompatActivity {
                         query = mReference.orderByChild("name").equalTo(newText);
                     }
 
-
+                    /**
+                     * Adapter koji sluzi za prikaz rezultata tipa model, BeerViewHolder
+                     * te na osnovu ulaznih parametara modela, layouta, holdera i upita prema bazi
+                     * prikazuje dobivene modele u cardView-u
+                     */
                     firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(
                             Beer.class, R.layout.beer_row, BeerViewHolder.class, query
                     ) {
@@ -164,6 +197,9 @@ public class BeersListActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Metoda koja inicijalno se poziva da  bi se prikazali svi modeli iz baze podataka
+     */
 
     public void showData(){
 
@@ -197,23 +233,49 @@ public class BeersListActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Upit za dohvacanje modela prema jakosti piva
+     * @param name
+     * @return
+     */
     public Query addPercentageCriteria(Double name ){
         query = mReference.orderByChild("percentage").equalTo(name);
         return query;
     }
+
+    /**
+     * Upit za dohvacanje modela prema imenu
+     * @param name
+     * @return
+     */
     public Query addNameCriteria(String name ){
         query = mReference.orderByChild("name").equalTo(name);
         return query;
     }
+
+    /**
+     * Upit za dohvacanje modela prema zemlji porijekla
+     * @param name
+     * @return
+     */
     public Query addCountryCriteria(String name ){
         query = mReference.orderByChild("country").equalTo(name);
         return query;
     }
+
+    /**
+     * Upit za dohvacanje modela prema tipu
+     * @param name
+     * @return
+     */
     public Query addTypeCriteria(String name ){
         query = mReference.orderByChild("strength").equalTo(name);
         return query;
     }
+    /**
+     * Dohvacanje intenta kako bismo znali koji je user logiran u aplikaciju odnosno idUsera
+     * @return
+     */
 
     private String getIntentUserId() {
         String userId = "";
@@ -222,6 +284,10 @@ public class BeersListActivity extends AppCompatActivity {
         }
         return userId;
     }
+    /**
+     * Dohvacanje intenta kako bismo znali koje je nacin ocjenivanja logiranog korisnika
+     * @return
+     */
 
     private String getIntentUserRating() {
         String userRating = "";

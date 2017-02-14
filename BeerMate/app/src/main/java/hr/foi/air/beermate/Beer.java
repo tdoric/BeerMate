@@ -4,6 +4,10 @@ package hr.foi.air.beermate;
  * Created by Tomislav on 11/4/2016.
  */
 
+/**
+ * Model koji se koristi za prikaz piva
+ */
+
 public class Beer {
 
     String uid;
@@ -15,6 +19,19 @@ public class Beer {
     Float percentage;
     int totalVotes;
     int numberOfVotes;
+
+    /**
+     * Konstruktor koji prima parametre:
+     * @param uid
+     * @param name
+     * @param strength
+     * @param image
+     * @param country
+     * @param brewery
+     * @param percentage
+     * @param totalVotes
+     * @param numberOfVotes
+     */
 
     public Beer(String uid,String name, String strength, String image, String country, String brewery, Float percentage,int totalVotes,int numberOfVotes) {
         this.uid= uid;
@@ -28,6 +45,9 @@ public class Beer {
         this.numberOfVotes=numberOfVotes;
     }
 
+    /**
+     * Prazan konstruktor potreban za dohvaćanje s Firebase
+     */
     public Beer() {
     }
 

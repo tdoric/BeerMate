@@ -18,7 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+/**
+ * Activity za potrebe registracije korisnika
+ */
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,7 +47,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-
+    /**
+     * Metoda koja prima parametre
+     * @param insertMail
+     * @param insertName
+     * @param language
+     * @param rating
+     *
+     * te na osnovu tih paramatera vrsi insert novog korisnika u bazu podataka
+     */
     private void insertData(String insertMail, String insertName, String language, String rating ) {
         mReference = FirebaseDatabase.getInstance().getReference().child("users");
         User user = new User();
@@ -57,6 +67,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    /**
+     * Metoda koja provjerava da li je korisnik popunio sva polja odnosno editTextove te pomoću firebase
+     * UI vrsi proces kreiranja novog usera u firebase authentication
+     */
     private void registerUser(){
 
         final String mail = editTextMail.getText().toString();
@@ -106,6 +120,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    /**
+     * Listener koji sluzi da izvrsi metode kada se klikne na odredeni gumb
+     * @param v
+     */
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -117,6 +136,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
+    /**
+     * Metoda za povratak na login ukoliko korisnik odustane od registracije
+     */
 
     private void backToLogin() {
         Intent i = new Intent(RegisterActivity.this,LoginActivity.class);

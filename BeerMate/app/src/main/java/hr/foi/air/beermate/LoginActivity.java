@@ -25,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Activity za potrebe prijavljivanja korisnika u aplikaciju
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     //defining view objects
@@ -59,6 +62,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonSignup.setOnClickListener(this);
         textViewRegister.setOnClickListener(this);
     }
+
+    /**
+     * Metoda koja sluzi za provjeru da li je korisnik popunio sva polja za prijavu
+     * te na osnovu popunjenih polja pomocu firebase UI prijavljuje korisnika u aplikaciju
+     */
 
     private void loginUser(){
 
@@ -126,6 +134,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    /**
+     * Listener koji osluskuje koji je gumb kliknut kako bi mogao izvrsiti odredenu metodu
+     * @param view
+     */
+
     @Override
     public void onClick(View view) {
 
@@ -140,6 +153,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
+    /**
+     * Metoda koja sluzi za otvaranje aktivnosti registracije
+     */
     private void openRegister() {
         Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
         startActivity(i);

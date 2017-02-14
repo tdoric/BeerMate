@@ -15,6 +15,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Set;
 
+/**
+ * Activity koji sadrzi potrebne metode za obavljanje funkcionalnosti
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     private DatabaseReference mReference;
@@ -29,7 +33,10 @@ public class SettingsActivity extends AppCompatActivity {
         editText.setEnabled(false);
     }
 
-
+    /**
+     * Dohvacanje intenta kako bismo znali koji je user logiran u aplikaciju odnosno idUsera
+     * @return
+     */
     private String getIntentUserId() {
         String userId = "";
         if (getIntent() != null) {
@@ -38,6 +45,10 @@ public class SettingsActivity extends AppCompatActivity {
         return userId;
     }
 
+    /**
+     * Dohvacanje intenta kako bismo znali koje je nacin ocjenivanja logiranog korisnika
+     * @return
+     */
     private String getIntentUserRating() {
         String userRating = "";
         if (getIntent() != null) {
@@ -46,6 +57,10 @@ public class SettingsActivity extends AppCompatActivity {
         return userRating;
     }
 
+    /**
+     * Dohvacanje intenta kako bismo znali koji je userName logiranog korisnika
+     * @return
+     */
     private String getIntentUserName() {
         String userName = "";
         if (getIntent() != null) {
@@ -54,16 +69,31 @@ public class SettingsActivity extends AppCompatActivity {
         return userName;
     }
 
+    /**
+     * Metoda koja prima view te na osnovu eventa aktivira metodu koja azurira stanje u bazi podataka
+     * @param view
+     */
+
     public void updateStar(View view) {
 
         mReference = FirebaseDatabase.getInstance().getReference().child("users").child(getIntentUserId());
         mReference.child("userRating").setValue("1");
     }
 
+    /**
+     * Metoda koja prima view te na osnovu eventa aktivira metodu koja azurira stanje u bazi podataka
+     * @param view
+     */
+
     public void updateTap(View view){
         mReference = FirebaseDatabase.getInstance().getReference().child("users").child(getIntentUserId());
         mReference.child("userRating").setValue("2");
     }
+
+    /**
+     * Metoda koja prima view te na osnovu eventa dohvaca username korisnika
+     * @param view
+     */
 
     public void catchUsername(View view){
 
@@ -71,6 +101,12 @@ public class SettingsActivity extends AppCompatActivity {
         editText.setText(getIntentUserName());
 
     }
+
+    /**
+     * Metoda prima view te na osnovu eventa azurira stanje u bazi podataka i provjerava
+     * da li je korisnik unio vrijednost u editText
+     * @param view
+     */
 
     public void updateUserName(View view) {
         if(editText.getText().toString().matches("")){
@@ -82,6 +118,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Metoda koja prima view te na osnovu eventa zatvara settings i postavlja intent kako bi ga mogla koristiti druga aktivnost
+     * @param view
+     */
 
     public void closeSettings(View view) {
         Intent i = new Intent(SettingsActivity.this,MainActivity.class);

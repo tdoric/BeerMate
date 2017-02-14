@@ -4,14 +4,27 @@ package hr.foi.air.beermate;
  * Created by Tomislav on 12/21/2016.
  */
 
+/**
+ * Model koji služi za prikazivanje lokacija na google maps-u
+ */
 public class Location {
 
     float latitude,longtitude;
     String name,description;
 
+    /**
+     * Prazan konstruktor potreban za dohvaćanje s Firebase
+     */
     public Location() {
     }
 
+    /**
+     * Konstruktor koji prima parametre
+     * @param latitude
+     * @param longtitude
+     * @param name
+     * @param description
+     */
     public Location(float latitude, float longtitude, String name, String description) {
         this.latitude = latitude;
         this.longtitude = longtitude;
