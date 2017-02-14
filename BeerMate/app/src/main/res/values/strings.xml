@@ -16,5 +16,26 @@
     <string name="usernameRegister">Username</string>
     <string name="buttonRegister">Register</string>
     <string name="repeatPassRegister">Repeat password</string>
+    <string name="beer_nameTap">Beer Name</string>
+    <string name="rate">Rate</string>
+    <string name="tap_to_rate">Tap to rate</string>
+    <string name="rank">RANK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="votes">Votes</string>
+    <string name="average_rate">Average rate</string>
+    <string name="brewery">Brewery</string>
+    <string name="country">Country</string>
+    <string name="percentage">Percentage</string>
+    <string name="type">Type</string>
+    <string name="availability">Availability</string>
+    <string name="rate_it">Rate it!</string>
+    <string name="name">Name</string>
+    <string name="pubs_names">Pubs Names</string>
+    <string name="locations_">Locations:</string>
+    <string name="filterName">Switch to name</string>
+    <string name="filterCountry">Switch to country</string>
+    <string name="filterPercentage">Switch to percentage</string>
+    <string name="filterType">Switch to type</string>
+    <string name="msgRating">Thank you for rating!</string>
 
 </resources>

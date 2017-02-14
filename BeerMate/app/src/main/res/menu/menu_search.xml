@@ -13,25 +13,25 @@
         <item
             android:id="@+id/nameBeer"
             android:orderInCategory="1"
-            android:title="Name">
+            android:title="@string/name">
 
         </item>
         <item
             android:id="@+id/countryBeer"
             android:orderInCategory="2"
-            android:title="Country">
+            android:title="@string/country">
 
         </item>
         <item
             android:id="@+id/percentageBeer"
             android:orderInCategory="3"
-            android:title="Percentage">
+            android:title="@string/percentage">
 
         </item>
         <item
             android:id="@+id/typeBeer"
             android:orderInCategory="4"
-            android:title="Type">
+            android:title="@string/type">
 
         </item>
 

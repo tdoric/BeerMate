@@ -6,19 +6,19 @@
     android:padding="2dip"
     android:background="@mipmap/background">
 
-    <TextView android:text="Beer Name" android:id="@+id/tap_rank_dialog_text"
+    <TextView android:text="@string/beer_nameTap" android:id="@+id/tap_rank_dialog_text"
         android:textSize="24dp" android:layout_marginTop="10dp"
         android:textColor="@color/grey"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <TextView android:text="Rate" android:id="@+id/tap_rank_dialog_textRate"
+    <TextView android:text="@string/rate" android:id="@+id/tap_rank_dialog_textRate"
         android:textSize="50dp" android:layout_marginTop="10dp"
         android:textColor="@color/grey"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <TextView android:text="Tap to rate" android:id="@+id/tap_rank_dialog_textHelp"
+    <TextView android:text="@string/tap_to_rate" android:id="@+id/tap_rank_dialog_textHelp"
         android:textSize="15dp" android:layout_marginTop="10dp"
         android:textColor="@color/grey"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -26,13 +26,13 @@
 
     <Button android:id="@+id/tap_rank_dialog_rateBtn"
         android:layout_height="wrap_content"
-        android:text="RANK"  android:focusable="false"
+        android:text="@string/rank"  android:focusable="false"
         android:layout_margin="5dip" android:textColor="@color/grey"
         android:textSize="20dip" android:layout_width="fill_parent" />
 
     <Button android:id="@+id/tap_rank_dialog_cancelBtn"
         android:layout_height="wrap_content"
-        android:text="CANCEL"  android:focusable="false"
+        android:text="@string/cancel"  android:focusable="false"
         android:layout_margin="5dip" android:textColor="@color/grey"
         android:textSize="20dip" android:layout_width="fill_parent" />
 

@@ -84,45 +84,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressDialog.show();
 
         //activity_login in app
-       firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-           @Override
-           public void onComplete(@NonNull Task<AuthResult> task) {
-              if(task.isSuccessful()){
-                  progressDialog.dismiss();
-                  Toast.makeText(LoginActivity.this,"Login successfully ",Toast.LENGTH_SHORT).show();
-                  mReference = FirebaseDatabase.getInstance().getReference().child("users");
-                  mReference.addValueEventListener(new ValueEventListener() {
-                      @Override
-                      public void onDataChange(DataSnapshot dataSnapshot) {
-                          for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
-                              User user = messageSnapshot.getValue(User.class);
-                              if(email.equals(user.getUserMail())){
-                                  Intent i = new Intent(LoginActivity.this,MainActivity.class);
-                                  i.putExtra("userId",messageSnapshot.getKey());
-                                  i.putExtra("userRating",user.getUserRating());
-                                  i.putExtra("userName",user.getUserName());
-                                  startActivity(i);
-                              }
+        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    progressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this,"Login successfully ",Toast.LENGTH_SHORT).show();
+                    mReference = FirebaseDatabase.getInstance().getReference().child("users");
+                    mReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                                User user = messageSnapshot.getValue(User.class);
+                                if(email.equals(user.getUserMail())){
+                                    Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                                    i.putExtra("userId",messageSnapshot.getKey());
+                                    i.putExtra("userRating",user.getUserRating());
+                                    i.putExtra("userName",user.getUserName());
+                                    startActivity(i);
+                                }
 
 
 
-                          }
-                      }
+                            }
+                        }
 
-                      @Override
-                      public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                      }
-                  });
+                        }
+                    });
 
 
-              }
-               else{
-                  progressDialog.dismiss();
-                  Toast.makeText(LoginActivity.this,"Error with activity_login!",Toast.LENGTH_SHORT).show();
-              }
-           }
-       });
+                }
+                else{
+                    progressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this,"Error with activity_login!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

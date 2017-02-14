@@ -27,7 +27,6 @@ public class BeersListActivity extends AppCompatActivity {
     private RecyclerView beersList;
     private DatabaseReference mReference;
     FirebaseRecyclerAdapter<Beer,BeerViewHolder> firebaseRecyclerAdapter;
-    ArrayAdapter<String> arrayAdapter ;
     Query query;
     String something="a";
     String userId = "";
@@ -59,19 +58,19 @@ public class BeersListActivity extends AppCompatActivity {
         switch (idItem){
             case R.id.nameBeer:
                 something="a";
-                Toast.makeText(getApplicationContext(), "Prvi", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.filterName, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.countryBeer:
                 something="b";
-                Toast.makeText(getApplicationContext(), "Drugi", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.filterCountry, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.percentageBeer:
                 something="c";
-                Toast.makeText(getApplicationContext(), "Treci", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.filterPercentage, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.typeBeer:
                 something="d";
-                Toast.makeText(getApplicationContext(), "Cetvrti", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.filterType, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return false;
@@ -113,12 +112,14 @@ public class BeersListActivity extends AppCompatActivity {
                     } else if (something == "b") {
 
                         query = addCountryCriteria(newText);
-                    } else if (something == "c" && !newText.equals("")) {
+                    } else if (something == "c" && !newText.equals("") && newText.matches("\\d+(\\.\\d+)*")) {
                         Double novo =  Double.valueOf(newText);
                         query = addPercentageCriteria(novo);
 
                     } else if (something == "d") {
                         query = addTypeCriteria(newText);
+                    }else{
+                        query = mReference.orderByChild("name").equalTo(newText);
                     }
 
 
@@ -173,6 +174,7 @@ public class BeersListActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(BeerViewHolder viewHolder, Beer model, int position) {
+
                 viewHolder.setTitle(model.getName());
                 viewHolder.setDesc(model.getStrength());
                 viewHolder.setImage(getApplicationContext(),model.getImage());
@@ -180,17 +182,13 @@ public class BeersListActivity extends AppCompatActivity {
                 viewHolder.setBrewery(model.getBrewery());
                 viewHolder.setPercentage(model.getPercentage());
 
-                model.setUid(this.getRef(position).getKey());  //linija kojom pokusavam dohvatiti key
+                model.setUid(this.getRef(position).getKey());
                 DecimalFormat df2 = new DecimalFormat(".#");
                 float average = (float) model.getTotalVotes() / (float) model.getNumberOfVotes();
                 viewHolder.setAverageRate(df2.format(average));
                 viewHolder.setVotes(model.getNumberOfVotes());
                 viewHolder.setRateButton(userRating, model.getUid(), model.getName(), average, model.getTotalVotes(), model.getNumberOfVotes());
                 viewHolder.setShowButton(model.getUid());
-
-
-
-
 
             }
         };
@@ -232,5 +230,7 @@ public class BeersListActivity extends AppCompatActivity {
         }
         return userRating;
     }
+
+
 
 }

@@ -43,7 +43,7 @@ public class StarRating extends RecyclerView.ViewHolder implements StrategyBeer 
                 float newRating = ratingUtil.calculateNewRating(Math.round(ratingBar.getRating()), totalVotes, numberOfVotes);
                 ratingUtil.updateVotes(id, totalVotes+Math.round(ratingBar.getRating()), numberOfVotes+1);
                 rankDialog.dismiss();
-                Toast.makeText(mView.getContext(), Float.toString(newRating), Toast.LENGTH_LONG).show(); //dodati poruku o uspjesnom ocjenjivanju
+                Toast.makeText(mView.getContext(), R.string.msgRating, Toast.LENGTH_SHORT).show();
             }
         });
         Button cancelBtn = (Button) rankDialog.findViewById(R.id.star_rank_dialog_cancelBtn);

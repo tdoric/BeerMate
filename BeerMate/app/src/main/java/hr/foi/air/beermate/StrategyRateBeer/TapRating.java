@@ -64,7 +64,7 @@ public class TapRating extends RecyclerView.ViewHolder implements StrategyBeer {
                 float newRating = ratingUtil.calculateNewRating(vote, totalVotes, numberOfVotes);
                 ratingUtil.updateVotes(id, totalVotes+vote, numberOfVotes+1);
                 rankDialog.dismiss();
-                Toast.makeText(mView.getContext(), Float.toString(newRating), Toast.LENGTH_LONG).show(); //TODO - obrisati
+                Toast.makeText(mView.getContext(),R.string.msgRating, Toast.LENGTH_SHORT).show();
                 rankDialog.dismiss();
             }
         });

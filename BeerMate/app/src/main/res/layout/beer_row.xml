@@ -39,7 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Rate it!" />
+            android:text="@string/rate_it" />
         <Button
             android:id="@+id/buttonShowPubs"
             android:fontFamily="Roboto"
@@ -48,14 +48,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Availability" />
+            android:text="@string/availability" />
         <TextView
             android:id="@+id/labelType"
             android:layout_width="match_parent"
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Type"
+            android:text="@string/type"
             android:textColor="@color/black" />
         <TextView
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Percentage"
+            android:text="@string/percentage"
             android:textColor="@color/black" />
         <TextView
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Country"
+            android:text="@string/country"
             android:textColor="@color/black" />
 
         <TextView
@@ -105,7 +105,7 @@
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Brewery"
+            android:text="@string/brewery"
             android:textColor="@color/black" />
 
         <TextView
@@ -122,7 +122,7 @@
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Average rate"
+            android:text="@string/average_rate"
             android:textColor="@color/black" />
         <TextView
             android:layout_width="match_parent"
@@ -138,7 +138,7 @@
             android:background="#07000000"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Votes"
+            android:text="@string/votes"
             android:textColor="@color/black" />
         <TextView
             android:layout_width="match_parent"
